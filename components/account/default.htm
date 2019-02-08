@@ -1,0 +1,46 @@
+<div class="basic-page">
+    <div class="container">
+        <div class="page-title">
+            <h1>Account</h1>
+            <div class="sub-box"></div>
+        </div>
+
+        <div class="container basic-content">
+            {% if not user %}
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-block">
+                        <h4 class="card-title">Sign in</h4>
+                        {% partial __SELF__ ~ '::signin' %}
+                    </div>
+                </div>
+
+                <div class="col-md-6 side-bar">
+                    <h4 class="card-title">Register</h4>
+                    {% partial __SELF__ ~ '::register' %}
+                </div>
+            </div>
+
+            {% else %}
+
+            {% partial __SELF__ ~ '::activation_check' %}
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-2">
+                        <form>
+                            <label for="file_data">Avatar</label>
+                            {% component 'cleanseImageUploader' %}
+                        </form>
+                    </div>
+                    <div class="col-10">
+                        {% partial __SELF__ ~ '::update' %}
+                        {% partial __SELF__ ~ '::deactivate_link' %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
