@@ -1,0 +1,18 @@
+<div class="basic-page">
+    <div class="container">
+        <div class="page-title">
+            <h1>Password Reset</h1>
+            <div class="sub-box"></div>
+        </div>
+
+        <div class="container basic-content">
+            <div id="partialUserResetForm">
+                {% if __SELF__.code == null %}
+                {% partial __SELF__ ~ '::restore' %}
+                {% else %}
+                {% partial __SELF__ ~ '::reset' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
